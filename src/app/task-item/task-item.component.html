@@ -1,0 +1,25 @@
+<div class="taskItem "
+     id="taskWrapper-{{data.taskId}}">
+    <!-- <pre>{{data | json}}</pre> -->
+    <div class="taskText"
+         [hidden]="editing"
+         (click)="startEdit(editBox)">
+        {{data.text}}
+    </div>
+    <input [hidden]="!editing"
+           #editBox
+           class="editText"
+           [(ngModel)]="data.text"
+           (keyup.enter)="finishEdit()"
+           (blur)="finishEdit()">
+    <div class="taskActions">
+        <i class="material-icons button"
+           (click)="onRemoveTask(data.text, data.taskId)">delete</i>
+        <i class="material-icons button"
+           (click)="startEdit(editBox)">edit</i>
+        <i class="material-icons handle">drag_handle</i>
+
+    </div>
+
+
+</div>
